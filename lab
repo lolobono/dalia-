@@ -1,0 +1,74 @@
+Write a program called search.cpp which prompts and reads a list containing non-negative integers or 0 into an array until the user enters a negative value or up to 10 values. Next, the program will prompt the user for a key value and then count the number of occurrences of key values in the array. Finally, it will display the indices (locations) of each key value in the array. You will write three functions: inputarray, countkeys, and print_indices.
+Use the template code provided for you. Replace ?? for “Created by:”, “Creation Date:”, and “Synopsis”
+The main function has been provided for you. Do not edit anything in this function. Spend a few minutes to understand the code here. An array is created using dynamic allocation and a pointer variable. Study the lecture and lecture notes on Pointers.
+Place function prototypes BEFORE the main function.
+Place function definitions AFTER the main function.
+Comment your functions (see last sentence above in the first paragraph above).
+Each function parameter should have a comment explaining the parameter.
+You will implement three functions (described below). You will determine when to use the const specifier and pass-by-value vs pass-by-reference for each function parameter. Make the correct choices to receive full credit.
+Write the function input_array which prompts the user for a list containing non-negative integers or 0. The user ends the list by entering a negative number or up to 10 integers.** Assume that the user will not enter more than 10 integers**. Store the list of integers into the array passed in as the first input parameter. Do NOT store the negative number to end user input (if that is how the user ends the list) into the array. The function returns the number of non-negative integers or 0 values entered by the user.
+Write the function count_keys which computes and returns the number of occurrences of a key value in a list.
+Write th procedure print_indices which displays the locations (array indices) of the key value in the list as a comma separated list delimited by “<…>”. Note that the last input parameter contains the number of occurrences of the key value in the list. Make sure you use this parameter in your solution.
+Thoroughly test your program on different input. For example, test your program when the user does not enter any valid value or just a single valid value. These are called “corner” or “boundary” cases. Use the provided test cases as well.
+Be sure that there is a comment documenting each variable.
+Be sure that your if statements, for and while loops and blocks are properly indented.
+
+/*
+  File: search.cpp
+  Created by: Dalia Khalil
+  Creation Date: 31/3/2020
+  Synopsis: This program prompts and reads a list containing non-negative integers or 0 into an array until the user enters a negative value or up to 10 values. then the program will prompt the user for key values and then count the number of occurences of each key key value in the array. Finally, The program will display the indices or locations of the key value in the array. This program will have three functions:input_array, count_keys, and print_indices.
+*/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+/* Place function prototypes here */
+// Function to input array.
+int input_array(int arr[],int size); // Function to input array. This function asks the user to input the values that will be stored in the array.
+// arr variable of type int to store the values that will be entered by the user.
+// size variable of type int to indicate the size of the array of the propmted values that maximum will be 10 values.
+// Function to count keys in the array.
+int count_keys(int arr[],int n,int key); // This function counts the number of key elements in the array entered by the user.
+// arr variable of type int to store the values that will be entered by the user.
+// n variable of type int tha will be used to count the number of occurences of the key element entered by the user in array arr[] 
+// key variable of type int that will be entered by the user. This value will be prompted and entered by the user. then this program will count the number of occurences of that key value in the array.
+// Function to print the indices (starting from 0) or locations of those key elements in the array and display it to the user.
+void print_indices(int arr[],int n,int key, int count); // This function prints the indices or locations of those key elements in array arr[] and display to the user.
+// arr variable of type int to store the values that will be entered by the user.
+// n variable of type int that will be used to count the number of occurences of the key element that are entered by the user and compare it to all the values in the array arr[] and then display the count or the number of occurences to the user.
+// key variable of type int that will be entered by the user. This value will be prompted and entered by the user.
+// count variable of type int that will be used in the loops to count the number of occurences of the key element in the array.
+int main()
+{
+	const int SIZE(10);
+	int * arr = new int[SIZE];
+	int key(0), count(0);
+	
+	int n = input_array(arr, SIZE);
+	
+	if (n > 0) {
+		cout << "Enter key (enter a negative value to stop): ";
+		cin >> key;
+		
+		while (key >= 0) {
+			count = count_keys(arr, n, key);
+			cout << "Counted " << count << " key(s)." << endl;
+		
+			print_indices(arr, n, key, count);
+			cout << "Enter key (enter a negative value to stop): ";
+			cin >> key;
+		}
+	}
+	
+	  print_indices(arr, n, key, count);
+  
+  return 0;
+}
+
+/* Place function definitions here */
+
+
+
